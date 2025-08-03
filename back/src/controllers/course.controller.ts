@@ -10,7 +10,7 @@ import db from "../models/index.ts";
  *    parameters:
  *      - in: query
  *        name: page
- *        schema: { type: integer, default: 1}
+ *        schema: { type: integer, default: 1 }
  *        description: Page number
  *      - in: query
  *        name: limit

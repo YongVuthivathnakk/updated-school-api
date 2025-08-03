@@ -35,8 +35,17 @@ export const getAllStudent = async (req: Request, res: Response) => {
   try {
     const students = await db.Student.findAll({
       include: db.Course,
+      limit: limit,
+      offset: (page - 1) * limit,
     });
-    res.json(students);
+    res.json({
+      meta: {
+        totalItems: total,
+        page: page,
+        totalPage: Math.ceil(total / limit),
+      },
+      data: students,
+    });
   } catch (err) {
     res.status(500).json({ error: (err as Error).message });
   }
